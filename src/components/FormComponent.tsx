@@ -232,7 +232,7 @@ export const FormComponent: React.FC = () => {
             label={formData.batchLabel}
             value={formData.batch}
             onChange={(value) => updateField('batch', value)}
-            placeholder={`e.g., ${formData.batchLabel === 'Class' ? 'Class 9' : formData.batchLabel === 'Level-Term' ? '2-I' : 'Spring 2023'}`}
+            placeholder={`e.g., ${formData.batchLabel === 'Class' ? 'Class 9' : formData.batchLabel === 'Level-Term' ? '2-I' : formData.batchLabel === 'Year' ? '1st year' : 'Spring 2023'}`}
           />
         </div>
         <FormField
@@ -258,23 +258,43 @@ export const FormComponent: React.FC = () => {
           placeholder="e.g., Professor, Assistant Professor"
           required={false}
         />
-        <FormField
-          label="Subject/Department"
-          value={formData.teacherSubjectDept}
-          onChange={(value) => updateField('teacherSubjectDept', value)}
-          placeholder="e.g., Computer Science"
-          required={false}
-        />
+        <div className="grid grid-cols-[120px_1fr] gap-4 items-end">
+          <SelectField
+            label="Field Label"
+            value={formData.teacherSubjectDeptLabel}
+            onChange={(value) => updateField('teacherSubjectDeptLabel', value)}
+            options={['Subject', 'Department']}
+            placeholder="Label"
+            required={false}
+          />
+          <FormField
+            label={formData.teacherSubjectDeptLabel}
+            value={formData.teacherSubjectDept}
+            onChange={(value) => updateField('teacherSubjectDept', value)}
+            placeholder={`Enter ${formData.teacherSubjectDeptLabel.toLowerCase()}`}
+            required={false}
+          />
+        </div>
       </FormSection>
 
       <FormSection title="Session Information" icon={<GraduationCap className="w-5 h-5" />}>
-        <FormField
-          label="Session/Semester"
-          value={formData.sessionSemester}
-          onChange={(value) => updateField('sessionSemester', value)}
-          placeholder="e.g., Spring 2024"
-          required={false}
-        />
+        <div className="grid grid-cols-[120px_1fr] gap-4 items-end">
+          <SelectField
+            label="Field Label"
+            value={formData.sessionSemesterLabel}
+            onChange={(value) => updateField('sessionSemesterLabel', value)}
+            options={['Session', 'Semester']}
+            placeholder="Label"
+            required={false}
+          />
+          <FormField
+            label={formData.sessionSemesterLabel}
+            value={formData.sessionSemester}
+            onChange={(value) => updateField('sessionSemester', value)}
+            placeholder={`e.g., ${formData.sessionSemesterLabel === 'Session' ? 'Spring 2024' : 'Fall 2024'}`}
+            required={false}
+          />
+        </div>
         <FormField
           label="Date"
           value={formData.date}

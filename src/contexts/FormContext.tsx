@@ -23,9 +23,11 @@ export interface FormData {
   // Teacher Info
   teacherName: string;
   teacherDesignation: string; // optional
+  teacherSubjectDeptLabel: string; // Subject or Department
   teacherSubjectDept: string; // Subject or Department
 
   // Session/Semester and Date
+  sessionSemesterLabel: string; // Session or Semester
   sessionSemester: string; // optional
   date: string; // optional
 }
@@ -52,7 +54,9 @@ const initialFormData: FormData = {
   group: '',
   teacherName: '',
   teacherDesignation: '',
+  teacherSubjectDeptLabel: 'Subject',
   teacherSubjectDept: '',
+  sessionSemesterLabel: 'Session',
   sessionSemester: '',
   date: '',
 };
