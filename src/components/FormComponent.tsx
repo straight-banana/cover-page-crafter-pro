@@ -212,12 +212,11 @@ export const FormComponent: React.FC = () => {
             placeholder={`Enter your ${formData.studentIdLabel.toLowerCase()}`}
           />
         </div>
-        <SelectField
+        <FormField
           label="Department"
           value={formData.department}
           onChange={(value) => updateField('department', value)}
-          options={departments}
-          placeholder="Select your department"
+          placeholder="Enter your department"
           required={false}
         />
         <div className="grid grid-cols-[120px_1fr] gap-4 items-end">
