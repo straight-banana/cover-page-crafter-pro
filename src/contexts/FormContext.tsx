@@ -6,22 +6,28 @@ export interface FormData {
   institutionLogo: string; // URL or base64
 
   // Course Info
-  courseName: string;
-  courseCode: string;
+  reportType: string; // Lab Report, Report, Assignment, Homework
+  courseFieldLabel: string; // Course Name or Subject
+  courseFieldValue: string;
+  courseCode: string; // optional
 
   // Student Info
   studentName: string;
+  studentIdLabel: string; // Roll, ID, UID
   studentId: string;
-  department: string;
+  department: string; // optional
+  batchLabel: string; // Batch, Class, Year, Level-Term
   batch: string;
   group: string; // optional
 
   // Teacher Info
   teacherName: string;
-  teacherDesignation: string;
+  teacherDesignation: string; // optional
+  teacherSubjectDept: string; // Subject or Department
 
-  // Session/Semester
-  sessionSemester: string;
+  // Session/Semester and Date
+  sessionSemester: string; // optional
+  date: string; // optional
 }
 
 interface FormContextType {
@@ -33,16 +39,22 @@ interface FormContextType {
 const initialFormData: FormData = {
   institutionName: '',
   institutionLogo: '',
-  courseName: '',
+  reportType: 'Lab Report',
+  courseFieldLabel: 'Course Name',
+  courseFieldValue: '',
   courseCode: '',
   studentName: '',
+  studentIdLabel: 'ID',
   studentId: '',
   department: '',
+  batchLabel: 'Batch',
   batch: '',
   group: '',
   teacherName: '',
   teacherDesignation: '',
+  teacherSubjectDept: '',
   sessionSemester: '',
+  date: '',
 };
 
 const FormContext = createContext<FormContextType | undefined>(undefined);

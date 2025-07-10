@@ -157,17 +157,35 @@ export const FormComponent: React.FC = () => {
       </FormSection>
 
       <FormSection title="Course Information" icon={<BookOpen className="w-5 h-5" />}>
-        <FormField
-          label="Course Name"
-          value={formData.courseName}
-          onChange={(value) => updateField('courseName', value)}
-          placeholder="e.g., Data Structures and Algorithms"
+        <SelectField
+          label="Report Type"
+          value={formData.reportType}
+          onChange={(value) => updateField('reportType', value)}
+          options={['Lab Report', 'Report', 'Assignment', 'Homework']}
+          placeholder="Select report type"
         />
+        <div className="grid grid-cols-[120px_1fr] gap-4 items-end">
+          <SelectField
+            label="Field Label"
+            value={formData.courseFieldLabel}
+            onChange={(value) => updateField('courseFieldLabel', value)}
+            options={['Course Name', 'Subject']}
+            placeholder="Label"
+            required={false}
+          />
+          <FormField
+            label={formData.courseFieldLabel}
+            value={formData.courseFieldValue}
+            onChange={(value) => updateField('courseFieldValue', value)}
+            placeholder={`Enter ${formData.courseFieldLabel.toLowerCase()}`}
+          />
+        </div>
         <FormField
           label="Course Code"
           value={formData.courseCode}
           onChange={(value) => updateField('courseCode', value)}
           placeholder="e.g., CSE-201"
+          required={false}
         />
       </FormSection>
 
@@ -178,25 +196,46 @@ export const FormComponent: React.FC = () => {
           onChange={(value) => updateField('studentName', value)}
           placeholder="Enter your full name"
         />
-        <FormField
-          label="Student ID"
-          value={formData.studentId}
-          onChange={(value) => updateField('studentId', value)}
-          placeholder="Enter your student ID"
-        />
+        <div className="grid grid-cols-[120px_1fr] gap-4 items-end">
+          <SelectField
+            label="ID Label"
+            value={formData.studentIdLabel}
+            onChange={(value) => updateField('studentIdLabel', value)}
+            options={['Roll', 'ID', 'UID']}
+            placeholder="Label"
+            required={false}
+          />
+          <FormField
+            label={formData.studentIdLabel}
+            value={formData.studentId}
+            onChange={(value) => updateField('studentId', value)}
+            placeholder={`Enter your ${formData.studentIdLabel.toLowerCase()}`}
+          />
+        </div>
         <SelectField
           label="Department"
           value={formData.department}
           onChange={(value) => updateField('department', value)}
           options={departments}
           placeholder="Select your department"
+          required={false}
         />
-        <FormField
-          label="Batch"
-          value={formData.batch}
-          onChange={(value) => updateField('batch', value)}
-          placeholder="e.g., Spring 2023"
-        />
+        <div className="grid grid-cols-[120px_1fr] gap-4 items-end">
+          <SelectField
+            label="Class Label"
+            value={formData.batchLabel}
+            onChange={(value) => updateField('batchLabel', value)}
+            options={['Batch', 'Class', 'Year', 'Level-Term']}
+            placeholder="Label"
+            required={false}
+          />
+          <FormField
+            label={formData.batchLabel}
+            value={formData.batch}
+            onChange={(value) => updateField('batch', value)}
+            placeholder={`e.g., ${formData.batchLabel === 'Class' ? 'Class 9' : formData.batchLabel === 'Level-Term' ? '2-I' : 'Spring 2023'}`}
+          />
+        </div>
         <FormField
           label="Group"
           value={formData.group}
@@ -213,12 +252,19 @@ export const FormComponent: React.FC = () => {
           onChange={(value) => updateField('teacherName', value)}
           placeholder="Enter teacher's full name"
         />
-        <SelectField
+        <FormField
           label="Designation"
           value={formData.teacherDesignation}
           onChange={(value) => updateField('teacherDesignation', value)}
-          options={designations}
-          placeholder="Select teacher's designation"
+          placeholder="e.g., Professor, Assistant Professor"
+          required={false}
+        />
+        <FormField
+          label="Subject/Department"
+          value={formData.teacherSubjectDept}
+          onChange={(value) => updateField('teacherSubjectDept', value)}
+          placeholder="e.g., Computer Science"
+          required={false}
         />
       </FormSection>
 
@@ -228,6 +274,14 @@ export const FormComponent: React.FC = () => {
           value={formData.sessionSemester}
           onChange={(value) => updateField('sessionSemester', value)}
           placeholder="e.g., Spring 2024"
+          required={false}
+        />
+        <FormField
+          label="Date"
+          value={formData.date}
+          onChange={(value) => updateField('date', value)}
+          placeholder="e.g., March 15, 2024"
+          required={false}
         />
       </FormSection>
     </div>
