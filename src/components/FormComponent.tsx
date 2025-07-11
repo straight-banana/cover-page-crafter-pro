@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Upload, User, GraduationCap, Building, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useForm } from '@/contexts/FormContext';
+import { useNavigate } from 'react-router-dom';
 
 const ValidationIndicator: React.FC<{ filled: boolean; required?: boolean }> = ({ 
   filled, 
@@ -111,6 +112,7 @@ const SelectField: React.FC<{
 
 export const FormComponent: React.FC = () => {
   const { formData, updateField } = useForm();
+  const navigate = useNavigate();
 
   const departments = [
     'Computer Science & Engineering',
@@ -306,7 +308,11 @@ export const FormComponent: React.FC = () => {
       </FormSection>
 
       <div className="flex justify-center mt-8">
-        <Button size="lg" className="min-w-[200px]">
+        <Button 
+          size="lg" 
+          className="min-w-[200px]"
+          onClick={() => navigate('/template-selection')}
+        >
           Continue to Template Selection
         </Button>
       </div>
