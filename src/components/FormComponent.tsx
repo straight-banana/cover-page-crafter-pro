@@ -5,6 +5,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { Upload, User, GraduationCap, Building, BookOpen } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { useForm } from '@/contexts/FormContext';
 
 const ValidationIndicator: React.FC<{ filled: boolean; required?: boolean }> = ({ 
@@ -303,6 +304,12 @@ export const FormComponent: React.FC = () => {
           required={false}
         />
       </FormSection>
+
+      <div className="flex justify-center mt-8">
+        <Button size="lg" className="min-w-[200px]">
+          Continue to Template Selection
+        </Button>
+      </div>
     </div>
   );
 };
